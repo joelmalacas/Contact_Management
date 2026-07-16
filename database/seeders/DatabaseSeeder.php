@@ -3,11 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\Admin;
+use App\Models\Contact;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
-{
+class DatabaseSeeder extends Seeder {
     use WithoutModelEvents;
 
     /**
@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void {
         Admin::factory(1)->create();
+        Contact::factory(6)->create();
     }
 }

@@ -121,7 +121,7 @@
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('contact.*') ? 'active' : '' }}" href="{{ route('contact.index') }}">
-                        <i class="bi bi-person-lines-fill"></i> Contactos
+                        <i class="bi bi-person-lines-fill"></i> Contact
                     </a>
                 </li>
             </ul>
@@ -136,7 +136,7 @@
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button type="submit" class="btn btn-sm btn-logout">
-                            <i class="bi bi-box-arrow-right"></i> Sair
+                            <i class="bi bi-box-arrow-right"></i> Logout
                         </button>
                     </form>
                 </li>
@@ -157,7 +157,7 @@
 </main>
 
 <footer>
-    <small>Painel Admin &copy; {{ date('Y') }}</small>
+    <small>Admin Panel &copy; {{ date('Y') }}</small>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
