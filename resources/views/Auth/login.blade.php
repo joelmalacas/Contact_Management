@@ -34,11 +34,11 @@
 
         <div class="mb-3 form-check">
             <input type="checkbox" name="remember" class="form-check-input" id="remember">
-            <label class="form-check-label" for="remember">Lembrar-me</label>
+            <label class="form-check-label" for="remember">Reminder</label>
         </div>
 
         <button type="submit" class="btn btn-primary w-100">
-            <i class="bi bi-box-arrow-in-right me-1"></i> Entrar
+            <i class="bi bi-box-arrow-in-right me-1"></i> Sign in
         </button>
     </form>
 @endsection

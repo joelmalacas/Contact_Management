@@ -6,9 +6,10 @@ use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller {
-    const int minLength = 5;
-    const int digits = 9;
-    const int max = 150;
+    
+    const minLength = 5;
+    const digits = 9;
+    const max = 150;
 
     /**
      * Display a listing of the resource.
