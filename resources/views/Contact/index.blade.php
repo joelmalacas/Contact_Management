@@ -17,7 +17,7 @@
                     <div class="card-body d-flex flex-column">
                         <div class="d-flex align-items-center gap-3 mb-3">
                             <div class="contact-avatar">
-                                {{ strtoupper(substr($contact->name, 0, 1)) }} {{-- OBTER A PRIMEIRA LETRA --}}
+                                {{ strtoupper(substr($contact->name, 0, 1)) }}
                             </div>
                             <div>
                                 <h5 class="card-title mb-0">{{ $contact->name }}</h5>

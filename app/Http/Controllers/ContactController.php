@@ -6,6 +6,10 @@ use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller {
+    const int minLength = 5;
+    const int digits = 9;
+    const int max = 150;
+
     /**
      * Display a listing of the resource.
      */
@@ -26,17 +30,34 @@ class ContactController extends Controller {
      * Store a newly created resource in storage.
      */
     public function store(Request $request) {
+        //TODO TRATAMENTO PARAM
         $contactVal = $request->validate([
-            'name' => 'required|string|min:5',
-            'email' => 'required|email|max:150',
-            'contact' => 'required|numeric|digits:9'
+            'name' => 'required|string|regex:/^[\pL\s]+$/u|min:' . self::minLength,
+            'email' => 'required|email|max:' . self::max,
+            'contact' => 'required|numeric|digits:' . self::digits,
         ], [
-            'name.required' => 'Nome é obrigatório',
+            'name.required' => 'Name is required',
+            'name.regex' => 'Name must not contain numbers.',
+            'name.min' => 'The name need to have at least ' . self::minLength  . ' characters',
+            'email.required' => 'Email required',
+            'email.email' => 'E-mail not valid',
+            'email.unique' => 'Email already exists',
+            'email.max' => 'Email is too long',
+            'contact.required' => 'Contact is required',
+            'contact.numeric' => 'Contact must be a number',
+            'contact.digits' => 'Contact must be ' . self::digits  . ' digits'
         ]);
 
-        Contact::create($contactVal);
+        try {
+            Contact::create($contactVal);
 
-        return redirect()->route('contact.index');
+            return redirect()
+                ->route('contact.index')
+                ->with('success', 'Contact has been created successfully');
+
+        } catch (\Exception $e) {
+            return back()->withInput()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -66,15 +87,37 @@ class ContactController extends Controller {
         //TODO UPDATE (request, id)
         $contact = Contact::findOrFail($id);
 
+        //TODO TRATAMENTO PARAM
         $contactVal = $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|email',
-            'contact' => 'required|numeric|digits:9'
+            'name' => 'required|string|regex:/^[\pL\s]+$/u|min:' . self::minLength,
+            'email' => 'required|email|max:' . self::max,
+            'contact' => 'required|numeric|digits:' . self::digits,
+        ], [
+            'name.required' => 'Name is required',
+            'name.regex' => 'Name must not contain numbers.',
+            'name.min' => 'The name need to have at least ' . self::minLength  . ' characters',
+            'email.required' => 'Email required',
+            'email.email' => 'E-mail not valid',
+            'email.unique' => 'Email already exists',
+            'email.max' => 'Email is too long',
+            'contact.required' => 'Contact is required',
+            'contact.numeric' => 'Contact must be a number',
+            'contact.digits' => 'Contact must be ' . self::digits  . ' digits'
         ]);
 
-        $contact->update($contactVal);
+        try {
+            $contact->update($contactVal);
 
-        return redirect()->route('contact.index');
+            return redirect()
+                ->route('contact.index')
+                ->withInput()
+                ->with('success', 'Contact has been updated successfully');
+
+        } catch (\Exception $e) {
+            return back()
+                ->withInput()
+                ->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**

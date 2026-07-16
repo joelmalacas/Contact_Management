@@ -20,7 +20,7 @@ class ContactFactory extends Factory
         $name = fake()->randomElement([
             'João Pedro',
             'Ana Carolina',
-            'Zé Tó',
+            'Tó Manel',
             'Patrícia Antunes',
             'Mónica Jardim',
             'João Baião'

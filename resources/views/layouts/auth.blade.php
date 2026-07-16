@@ -4,162 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('titulo', 'Autenticação')</title>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-        }
-
-        body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: radial-gradient(circle at top left, #34495e, #1a252f 65%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* formas decorativas no fundo */
-        body::before,
-        body::after {
-            content: "";
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.25;
-        }
-
-        body::before {
-            width: 400px;
-            height: 400px;
-            background: #3498db;
-            top: -100px;
-            left: -100px;
-        }
-
-        body::after {
-            width: 350px;
-            height: 350px;
-            background: #9b59b6;
-            bottom: -80px;
-            right: -80px;
-        }
-
-        .auth-wrapper {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            max-width: 420px;
-            padding: 20px;
-            animation: slideUp 0.5s ease both;
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(25px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        .auth-card {
-            border: none;
-            border-radius: 16px;
-            box-shadow: 0 20px 45px rgba(0,0,0,0.35);
-            overflow: hidden;
-        }
-
-        .auth-card .card-header {
-            background: linear-gradient(135deg, #2c3e50, #3498db);
-            color: white;
-            text-align: center;
-            padding: 2.25rem 2rem 1.75rem;
-            border: none;
-        }
-
-        .auth-card .card-header .icon-circle {
-            width: 60px;
-            height: 60px;
-            background: rgba(255,255,255,0.15);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 12px;
-            font-size: 1.6rem;
-        }
-
-        .auth-card .card-header h4 {
-            margin: 0;
-            font-weight: 700;
-        }
-
-        .auth-card .card-header p {
-            margin: 4px 0 0;
-            font-size: 0.85rem;
-            opacity: 0.85;
-        }
-
-        .auth-card .card-body {
-            padding: 2.25rem 2rem;
-            background: white;
-        }
-
-        .form-label {
-            font-weight: 600;
-            font-size: 0.85rem;
-            color: #2c3e50;
-        }
-
-        .input-group-text {
-            background-color: #f4f6f8;
-            border-right: none;
-            color: #7f8c8d;
-        }
-
-        .form-control {
-            padding: 11px 14px;
-            font-size: 0.95rem;
-            border-left: none;
-        }
-
-        .input-group:focus-within .input-group-text,
-        .input-group:focus-within .form-control {
-            border-color: #3498db;
-        }
-
-        .form-control:focus {
-            box-shadow: none;
-            border-color: #3498db;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #3498db, #2c3e50);
-            border: none;
-            padding: 12px;
-            font-weight: 600;
-            font-size: 1rem;
-            border-radius: 8px;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 18px rgba(52,152,219,0.4);
-        }
-
-        .form-check-label {
-            font-size: 0.88rem;
-            color: #555;
-        }
-
-        .alert-danger {
-            border-radius: 8px;
-            font-size: 0.88rem;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 </head>
 <body>
 
@@ -170,7 +17,7 @@
                 <i class="bi bi-shield-lock-fill"></i>
             </div>
             <h4>Painel Admin</h4>
-            <p>Acesso restrito a admin</p>
+            <p>Restrict Access</p>
         </div>
         <div class="card-body">
             @yield('conteudo')
