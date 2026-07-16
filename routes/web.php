@@ -1,0 +1,7 @@
+<?php
+
+use App\Http\Controllers\ContactController;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {return view('layouts.app');});
+Route::resource('contact', ContactController::class);
